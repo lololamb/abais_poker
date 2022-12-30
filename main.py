@@ -1,16 +1,16 @@
-import pygame
-from MainController import *
+from controller.MainController import *
 from view import *
 from const import *
 
 # Programme principal
 
 # Initialisation de l'écran principal
-mainScreen = PokerTable(CONST_SCREEN_WIDTH, CONST_SCREEN_HEIGHT)
-mainScreen.initialize()
+table = PokerTable(CONST_SCREEN_WIDTH, CONST_SCREEN_HEIGHT)
+table.initialize()
 
-mainApp = MainApplication(mainScreen)
+mainApp = MainApplication(table)
 mainApp.run()
+
 
 
 # imageBaseDir = 'images/'

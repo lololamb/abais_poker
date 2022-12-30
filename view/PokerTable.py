@@ -1,9 +1,10 @@
 import pygame
 from const import *
-
+from .PygameButton import *
 
 # Cette classe représente la vue de la table de poker
 class PokerTable:
+    screen: pygame.Surface
     def __init__(self, width, height):
         self.width = width
         self.height = height

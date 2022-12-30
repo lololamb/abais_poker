@@ -1,12 +1,23 @@
 import view
 import pygame
-
+from view import Button
+from view import PokerTable
+from model import Player
 
 # Classe représentant l'application principale
 class MainApplication:
-    def __init__(self, screen):
-        self.screen = screen
+    buttons: list[Button]
+    players: list[Player]
+
+    def __init__(self, table: PokerTable):
+        self.buttons = []
+        self.table = table
         self.clock = pygame.time.Clock()
+
+        mainButton = Button(30, 30, 400, 100, 'Button One (onePress)', myFunction)
+        self.buttons.append(mainButton)
+
+
 
     def run(self):
         x = 0
@@ -14,6 +25,10 @@ class MainApplication:
         running = True
 
         while running:
+            for button in self.buttons:
+                button.process()
+                self.table.screen.blit(button.buttonSurface, button.buttonRect)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -35,3 +50,9 @@ class MainApplication:
             self.clock.tick(120)
 
         pygame.quit()
+
+def myFunction(source):
+    print('Button Pressed')
+    print(source)
+
+
